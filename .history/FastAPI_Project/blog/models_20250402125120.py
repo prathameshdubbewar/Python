@@ -1,0 +1,5 @@
+from database import Base
+from sqlalchemy import Column, Integer, String
+
+class Blog(base):
+    id = Column(Integer,primary_key=True,)

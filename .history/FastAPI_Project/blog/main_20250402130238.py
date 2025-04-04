@@ -1,0 +1,17 @@
+from fastapi import FastAPI
+from pydantic import BaseModel
+import models
+import database  # Make sure this is correct
+
+app = FastAPI()
+
+# Create tables in the database
+models.Base.metadata.create_all(database.engine)
+
+class Blog(BaseModel):
+    title: str
+    body: str
+
+@app.post('/blog')
+def create(request: Blog):
+    return request
